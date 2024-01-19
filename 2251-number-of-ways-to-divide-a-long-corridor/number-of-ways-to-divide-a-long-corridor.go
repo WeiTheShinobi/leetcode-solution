@@ -1,34 +1,19 @@
 func numberOfWays(corridor string) int {
 	const mod = 1e9 + 7
-	result := 1
-	chair := false
-	chairNum := 0
-	treeNum := 0
-	totalChair := 0
-	for _, c := range corridor {
-		if chair {
-			if c == 'P' {
-				treeNum++
-			} else {
-				result *= treeNum + 1
-        result %= mod
-				treeNum = 0
-				chair = false
+	pre, count, result := 0, 0, 1
+	for i, c := range corridor {
+		if c == 'S' {
+			count++
+			if count > 2 && count%2 == 1 {
+				result *= i - pre
+				result %= mod
 			}
-		}
-		if !chair {
-			if c == 'S' {
-				chairNum++
-        totalChair++
-			}
-			if chairNum == 2 {
-				chair = true
-				chairNum = 0
-			}
+			pre = i
 		}
 	}
-	if totalChair%2 == 1 || totalChair < 2 {
+
+	if count < 2 || count%2 == 1 {
 		return 0
 	}
-	return result % mod
+	return result
 }
