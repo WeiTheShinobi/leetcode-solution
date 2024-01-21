@@ -6,10 +6,3 @@ func rob(nums []int) int {
     }
     return dp[len(dp)-1]
 }
-
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}
