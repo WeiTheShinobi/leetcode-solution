@@ -1,11 +1,10 @@
 class Solution:
     def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
-        @cache
-        def dfs(i: int) -> int:
-            res = mx = 0
+        dp = [0] * (len(arr) + 1)
+        for i in range(len(arr)):
+            mx = 0
             for j in range(i, max(i - k, -1), -1):
                 mx = max(mx, arr[j])
-                res = max(res, dfs(j - 1) + (i - j + 1) * mx)
-            return res
+                dp[i+1] = max(dp[i+1], dp[j]+(i-j+1)*mx)
 
-        return dfs(len(arr) - 1)
+        return dp[len(arr)]
