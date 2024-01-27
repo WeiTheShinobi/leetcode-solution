@@ -8,7 +8,7 @@ func mctFromLeafValues(arr []int) int {
 			} else {
 				result += stack[len(stack)-1] * stack[len(stack)-2]
 			}
-			// [x, y] z  | y<z || x<z -> x*y
+			// [x, y] z  | y<z && x<z -> x*y
 			// [x, z] 
 			stack = stack[:len(stack)-1]
 		}
