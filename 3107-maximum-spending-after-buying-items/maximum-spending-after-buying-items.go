@@ -7,11 +7,9 @@ func maxSpending(values [][]int) int64 {
 	}
 
 	sort.Ints(nums)
-	d := 1
 	var result int64
-	for i := 0; i < len(nums); i++ {
+	for i, d := 0, 1; i < len(nums); i, d = i+1, d+1 {
 		result += int64(nums[i] * d)
-		d++
 	}
 	return result
 }
