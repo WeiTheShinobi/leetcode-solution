@@ -5,7 +5,11 @@ func maximumHappinessSum(happiness []int, k int) int64 {
 
 	var result int64
 	for i := 0; i < k; i++ {
-		result += int64(max(happiness[i]-i, 0))
+		v := int64(happiness[i] - i)
+		if v < 0 {
+			break
+		}
+		result += v
 	}
 
 	return result
