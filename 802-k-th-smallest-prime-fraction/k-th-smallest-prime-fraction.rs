@@ -8,7 +8,7 @@ impl Solution {
 
         let mut r_arr = vec![];
         for i in 0..arr.len() {
-            for j in i..arr.len() {
+            for j in i+1..arr.len() {
                 let r = arr[i] as f32 / arr[j] as f32;
                 r_arr.push(Pair {
                     x: arr[i],
