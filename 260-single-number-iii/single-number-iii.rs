@@ -7,11 +7,10 @@ impl Solution {
         nums.iter().fold(vec![0,0], |mut acc, x| {
             if x & right_most > 0 {
                 acc[0] ^= x;
-                acc
             } else {
                 acc[1] ^= x;
-                acc
             }
+            acc
         })
     }
 }
