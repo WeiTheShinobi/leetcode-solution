@@ -13,8 +13,10 @@ impl Solution {
             }).
             iter().enumerate().
             fold(vec![], |mut acc, en| {
-                (0..*en.1).into_iter().for_each(|_| {
-                    acc.push(std::char::from_u32((b'a' + en.0 as u8) as u32).unwrap().to_string());
+                (0..*en.1).for_each(|_| {
+                    acc.push(std::char::from_u32((b'a' + en.0 as u8) as u32).
+                        unwrap().
+                        to_string());
                 });
                 acc
             })
