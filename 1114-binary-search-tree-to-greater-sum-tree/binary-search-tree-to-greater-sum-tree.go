@@ -10,7 +10,6 @@ func bstToGst(root *TreeNode) *TreeNode {
         node.Val = sum
         dfs(node.Left)
     }
-    // call DFS
     dfs(root)
     return root
 }
