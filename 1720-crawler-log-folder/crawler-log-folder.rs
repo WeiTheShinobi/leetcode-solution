@@ -3,7 +3,7 @@ impl Solution {
         logs.iter().fold(0, |acc, x| {
             match x.as_str() {
                 "./" => acc,
-                "../" => if acc > 0 { acc - 1 } else { acc }
+                "../" => acc - (acc > 0) as i32,
                 _ => acc + 1,
             }
         })
