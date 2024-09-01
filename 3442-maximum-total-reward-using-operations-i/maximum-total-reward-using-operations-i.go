@@ -1,27 +1,21 @@
 func maxTotalReward(rewardValues []int) int {
-	sort.Ints(rewardValues)
-	dp := make([][]bool, len(rewardValues)+1)
-	for i := range dp {
-		dp[i] = make([]bool, 4001)
-	}
+	m := slices.Max(rewardValues) * 2
+	dp := make([]bool, m)
+	dp[0] = true
 
-	dp[0][0] = true
-	for i := 1; i < len(dp); i++ {
-		v := rewardValues[i-1]
-		for j := 0; j < 4000; j++ {
-			if j >= v  && j - v < v {
-				dp[i][j] = dp[i-1][j] || dp[i-1][j-v]
-			} else {
-				dp[i][j] = dp[i-1][j]
+	sort.Ints(rewardValues)
+	for i := 0; i < len(rewardValues); i++ {
+		for j := 0; j < rewardValues[i]; j++ {
+			if dp[j] {
+				dp[j+rewardValues[i]] = true
 			}
 		}
 	}
 
-	for i := 4000; i >= 0; i-- {
-		if dp[len(dp)-1][i] {
+	for i := len(dp) - 1; i >= 0; i-- {
+		if dp[i] {
 			return i
 		}
 	}
-
 	return 0
 }
