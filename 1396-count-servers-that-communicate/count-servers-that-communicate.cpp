@@ -1,15 +1,13 @@
 class Solution {
 public:
   int countServers(vector<vector<int>> &grid) {
-    vector<int> seen;
     auto n = grid.size();
     auto m = grid[0].size();
 
-    seen.resize(m);
     auto result = 0;
-
     for (size_t i = 0; i < n; i++) {
       auto count = 0;
+      // only use this variable when that line's number of 1 is 1  
       auto only_one_pos = -1;
 
       for (size_t j = 0; j < m; j++) {
