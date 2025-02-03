@@ -15,12 +15,7 @@ public:
             } else {
                 min_arr = 1;
             }
-            if (max_arr > result) {
-                result = max_arr;
-            }
-            if (min_arr > result) {
-                result = min_arr;
-            }
+            result = max(result, max(max_arr, min_arr));
         }
 
         return result;
